@@ -19,7 +19,7 @@ const Users = () => {
       } catch (err) {}
     };
     getAllUsers();
-  }, []);
+  }, [sendRequest]);
 
   return (
     <Fragment>

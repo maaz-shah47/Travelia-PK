@@ -5,7 +5,7 @@ import PlaceItem from './PlaceItem';
 
 import './PlaceList.scss';
 
-export const PlaceList = ({ items }) => {
+export const PlaceList = ({ items, onDelete }) => {
   if (items.length === 0) {
     return (
       <div className='place-list center'>
@@ -20,16 +20,15 @@ export const PlaceList = ({ items }) => {
   return (
     <ul className='place-list'>
       {items.map(
-        ({ id, title, description, address, creator, location, imageUrl }) => (
+        ({ id, title, description, address, creator, location, image }) => (
           <PlaceItem
             key={id}
             id={id}
-            image={imageUrl}
             title={title}
             description={description}
             address={address}
+            onDelete={onDelete}
             creatorId={creator}
-            coordinates={location}
           />
         )
       )}
