@@ -16,7 +16,6 @@ export const PlaceList = ({ items, onDelete }) => {
       </div>
     );
   }
-
   return (
     <ul className='place-list'>
       {items.map(
@@ -25,6 +24,7 @@ export const PlaceList = ({ items, onDelete }) => {
             key={id}
             id={id}
             title={title}
+            image={image}
             description={description}
             address={address}
             onDelete={onDelete}
