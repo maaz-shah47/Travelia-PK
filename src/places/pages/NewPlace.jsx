@@ -18,7 +18,7 @@ import './Place.scss';
 const NewPlace = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpRequest();
   const history = useHistory();
-  const { userId } = useContext(UserContext);
+  const { userId, token } = useContext(UserContext);
   const [formState, inputHandler] = useForm(
     {
       title: {
@@ -50,7 +50,9 @@ const NewPlace = () => {
       formData.append('address', formState.inputs.address.value);
       formData.append('creator', userId);
       formData.append('image', formState.inputs.image.value);
-      await sendRequest('http://localhost:5000/api/places', 'POST', formData);
+      await sendRequest('http://localhost:5000/api/places', 'POST', formData, {
+        Authorization: 'Bearer ' + token,
+      });
       history.push('/');
     } catch (error) {}
   };
